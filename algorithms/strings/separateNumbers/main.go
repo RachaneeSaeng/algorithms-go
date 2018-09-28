@@ -17,20 +17,25 @@ func separateNumbers(s string) {
 		return
 	}
 
-	for digit := 1; digit*2 < strLenght; digit++ {
+	for digit := 1; digit*2 <= strLenght; digit++ {
 		firstValue := s[0:digit]
 		patternDigit := digit
-		if firstValue == strings.Repeat("9", digit) {
+
+		current := digit
+		allNines, _ := strconv.ParseInt(strings.Repeat("9", digit), 10, 64)
+		value, _ := strconv.ParseInt(firstValue, 10, 64)
+		if value == allNines {
 			patternDigit = digit + 1
 		}
 
-		current := digit
-		value, _ := strconv.ParseInt(firstValue, 10, 32)
 		for current+patternDigit <= strLenght {
-			nextValue, _ := strconv.ParseInt(s[current:current+patternDigit], 10, 32)
+			nextValue, _ := strconv.ParseInt(s[current:current+patternDigit], 10, 64)
 			if value+1 == nextValue {
 				value = nextValue
 				current = current + patternDigit
+				if value == allNines {
+					patternDigit = digit + 1
+				}
 			} else {
 				break
 			}
