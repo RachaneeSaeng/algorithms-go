@@ -9,6 +9,7 @@ import (
 )
 
 // Complete the camelcase function below.
+// check if string is in format camelCase
 func camelcase(s string) int32 {
 	s = strings.Trim(s, " ")
 	if len(s) == 0 {

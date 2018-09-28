@@ -10,8 +10,8 @@ import (
 )
 
 // Complete the minimumNumber function below.
+// Return the minimum number of characters to make the password strong
 func minimumNumber(n int32, password string) int32 {
-	// Return the minimum number of characters to make the password strong
 	var digit, lowercase, uppercase, special bool
 	for _, c := range password {
 		if c >= 48 && c <= 57 {

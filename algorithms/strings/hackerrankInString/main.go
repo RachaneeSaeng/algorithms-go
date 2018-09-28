@@ -10,6 +10,7 @@ import (
 )
 
 // Complete the hackerrankInString function below.
+// To find 'hackerrank' word hidden among other characters
 func hackerrankInString(s string) string {
 	hackerRank := [10]rune{'h', 'a', 'c', 'k', 'e', 'r', 'r', 'a', 'n', 'k'}
 	if len(s) < 10 {
@@ -21,7 +22,7 @@ func hackerrankInString(s string) string {
 		if hackerRank[checkingIndex] == c {
 			checkingIndex++
 			if checkingIndex == 10 {
-				return "YES"
+				return "YES" //found all characters of 'hackerrank'
 			}
 		}
 	}

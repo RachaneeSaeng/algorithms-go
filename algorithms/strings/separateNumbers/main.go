@@ -10,6 +10,7 @@ import (
 )
 
 // Complete the separateNumbers function below.
+// Check if the string can be separated to be consecutive numbers
 func separateNumbers(s string) {
 	strLenght := len(s)
 	if strLenght <= 1 || s[0] == '0' {

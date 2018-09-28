@@ -8,7 +8,8 @@ import (
 	"strings"
 )
 
-// Complete the pangrams function below.
+// Complete the pangrams function below. 
+// pangrams is one or more sentences that consist of all alphabet
 func pangrams(s string) string {
 	var charset [26]bool
 	charCount := 0

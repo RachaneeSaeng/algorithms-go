@@ -14,6 +14,7 @@ type weightedUniform struct {
 }
 
 // Complete the weightedUniformStrings function below.
+// Check if the query value can produce by any uniform
 func weightedUniformStrings(s string, queries []int32) []string {
 	uniforms := []weightedUniform{}
 
