@@ -18,3 +18,27 @@ func (node *Node) Length() int {
 	}
 	return 1 + node.Next.Length()
 }
+
+func (node *Node) InsertBefore(data int) *Node {
+	return &Node{Data: data, Next: node}
+}
+
+func (node *Node) InsertAfter(data int) *Node {
+	newNode := &Node{Data: data, Next: nil}
+	node.Next = newNode
+	return node
+}
+
+func (node *Node) PadLeft(padding int) *Node {
+	for i := 0; i < padding; i++ {
+		node = node.InsertBefore(0)
+	}
+	return node
+}
+
+func (node *Node) PadRight(padding int) *Node {
+	for i := 0; i < padding; i++ {
+		node = node.InsertAfter(0)
+	}
+	return node
+}
