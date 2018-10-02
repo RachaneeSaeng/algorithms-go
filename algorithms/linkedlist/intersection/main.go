@@ -18,6 +18,7 @@ func findIntersaction(l1 *lnklist.Node, l2 *lnklist.Node) *lnklist.Node {
 	info2 := getTailAndSize(l2)
 
 	// if the last items is not the same, that means they are not intesect
+	// if check that if it's really the same item (same memory address), not just having same value
 	if info1.tail != info2.tail {
 		return nil
 	}
