@@ -1,11 +1,13 @@
 package linkedlist
 
-type IntNode struct {
+type Node struct {
 	Data int
-	Next *IntNode
+	Next *Node
 }
 
-type StringNode struct {
-	Data string
-	Next *StringNode
+func (node *Node) Length() int {
+	if node == nil {
+		return 0
+	}
+	return 1 + node.Next.Length()
 }
