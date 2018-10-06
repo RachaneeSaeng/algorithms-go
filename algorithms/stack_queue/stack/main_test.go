@@ -8,33 +8,33 @@ import (
 )
 
 func Test_Push_Empty(t *testing.T) {
-	stk := stack{}
-	stk.push(10)
+	stk := Stack{}
+	stk.Push(10)
 
-	expectedResult := stack{top: lnklist.New(10, nil)}
+	expectedResult := Stack{top: lnklist.New(10, nil)}
 	require.Equal(t, expectedResult, stk)
 }
 
 func Test_Push_Existing(t *testing.T) {
-	stk := stack{top: lnklist.New(10, nil)}
-	stk.push(20)
+	stk := Stack{top: lnklist.New(10, nil)}
+	stk.Push(20)
 
-	expectedResult := stack{top: lnklist.New(20, lnklist.New(10, nil))}
+	expectedResult := Stack{top: lnklist.New(20, lnklist.New(10, nil))}
 	require.Equal(t, expectedResult, stk)
 }
 
 func Test_Pop_Empty(t *testing.T) {
-	stk := stack{}
-	_, err := stk.pop()
+	stk := Stack{}
+	_, err := stk.Pop()
 
 	require.Error(t, err)
 }
 
 func Test_Pop_Existing(t *testing.T) {
-	stk := stack{top: lnklist.New(20, lnklist.New(10, nil))}
-	result, err := stk.pop()
+	stk := Stack{top: lnklist.New(20, lnklist.New(10, nil))}
+	result, err := stk.Pop()
 
-	expectedStk := stack{top: lnklist.New(10, nil)}
+	expectedStk := Stack{top: lnklist.New(10, nil)}
 
 	require.NoError(t, err)
 	require.Equal(t, 20, result)
@@ -42,17 +42,17 @@ func Test_Pop_Existing(t *testing.T) {
 }
 
 func Test_Peek_Empty(t *testing.T) {
-	stk := stack{}
-	_, err := stk.peek()
+	stk := Stack{}
+	_, err := stk.Peek()
 
 	require.Error(t, err)
 }
 
 func Test_Peek_Existing(t *testing.T) {
-	stk := stack{top: lnklist.New(20, lnklist.New(10, nil))}
-	result, err := stk.peek()
+	stk := Stack{top: lnklist.New(20, lnklist.New(10, nil))}
+	result, err := stk.Peek()
 
-	expectedStk := stack{top: lnklist.New(20, lnklist.New(10, nil))}
+	expectedStk := Stack{top: lnklist.New(20, lnklist.New(10, nil))}
 
 	require.NoError(t, err)
 	require.Equal(t, 20, result)
@@ -60,15 +60,15 @@ func Test_Peek_Existing(t *testing.T) {
 }
 
 func Test_IsEmpty_Empty(t *testing.T) {
-	stk := stack{}
-	result := stk.isEmpty()
+	stk := Stack{}
+	result := stk.IsEmpty()
 
 	require.True(t, result)
 }
 
 func Test_IsEmpty_Existing(t *testing.T) {
-	stk := stack{top: lnklist.New(20, lnklist.New(10, nil))}
-	result := stk.isEmpty()
+	stk := Stack{top: lnklist.New(20, lnklist.New(10, nil))}
+	result := stk.IsEmpty()
 
 	require.False(t, result)
 }

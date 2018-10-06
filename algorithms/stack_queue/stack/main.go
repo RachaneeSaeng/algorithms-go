@@ -6,16 +6,16 @@ import (
 	"../../linkedlist/lnklist"
 )
 
-type stack struct {
+type Stack struct {
 	top *lnklist.Node
 }
 
-func (stk *stack) push(n int) {
+func (stk *Stack) Push(n int) {
 	newNode := lnklist.New(n, stk.top)
 	stk.top = newNode
 }
 
-func (stk *stack) pop() (int, error) {
+func (stk *Stack) Pop() (int, error) {
 	if stk.top != nil {
 		data := stk.top.Data
 		stk.top = stk.top.Next
@@ -24,14 +24,14 @@ func (stk *stack) pop() (int, error) {
 	return 0, errors.New("Empty stack")
 }
 
-func (stk *stack) peek() (int, error) {
+func (stk *Stack) Peek() (int, error) {
 	if stk.top != nil {
 		return stk.top.Data, nil
 	}
 	return 0, errors.New("Empty stack")
 }
 
-func (stk *stack) isEmpty() bool {
+func (stk *Stack) IsEmpty() bool {
 	return stk.top == nil
 }
 
