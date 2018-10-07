@@ -12,9 +12,8 @@ func greatestCommonDevider(n1 int, n2 int) int {
 
 	if n2 == 0 { // when it's devisible, that mean n2 of the previous call (n1 this call) is GCD
 		return n1
-	} else {
-		return greatestCommonDevider(n2, n1%n2)
 	}
+	return greatestCommonDevider(n2, n1%n2)
 }
 
 func main() {
