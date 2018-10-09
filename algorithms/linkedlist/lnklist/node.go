@@ -1,11 +1,11 @@
 package lnklist
 
 type Node struct {
-	Data int
+	Data interface{}
 	Next *Node
 }
 
-func New(data int, next *Node) *Node {
+func New(data interface{}, next *Node) *Node {
 	return &Node{
 		Data: data,
 		Next: next,
@@ -19,11 +19,11 @@ func (node *Node) Length() int {
 	return 1 + node.Next.Length()
 }
 
-func (node *Node) InsertBefore(data int) *Node {
+func (node *Node) InsertBefore(data interface{}) *Node {
 	return &Node{Data: data, Next: node}
 }
 
-func (node *Node) InsertAfter(data int) *Node {
+func (node *Node) InsertAfter(data interface{}) *Node {
 	newNode := &Node{Data: data, Next: nil}
 	node.Next = newNode
 	return node
