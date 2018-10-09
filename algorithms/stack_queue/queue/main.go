@@ -42,6 +42,10 @@ func (stk *Queue) IsEmpty() bool {
 	return stk.first == nil
 }
 
+func (stk *Queue) Length() int {
+	return stk.first.Length()
+}
+
 func main() {
 
 }
