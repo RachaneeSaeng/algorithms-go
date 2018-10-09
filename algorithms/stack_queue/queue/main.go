@@ -6,12 +6,12 @@ import (
 	"../../linkedlist/lnklist"
 )
 
-type queue struct {
+type Queue struct {
 	first *lnklist.Node
 	last  *lnklist.Node
 }
 
-func (stk *queue) add(n interface{}) {
+func (stk *Queue) Add(n interface{}) {
 	newNode := lnklist.New(n, nil)
 	if stk.last != nil {
 		stk.last.Next = newNode
@@ -22,7 +22,7 @@ func (stk *queue) add(n interface{}) {
 	}
 }
 
-func (stk *queue) remove() (interface{}, error) {
+func (stk *Queue) Remove() (interface{}, error) {
 	if stk.first != nil {
 		data := stk.first.Data
 		stk.first = stk.first.Next
@@ -31,14 +31,14 @@ func (stk *queue) remove() (interface{}, error) {
 	return 0, errors.New("Empty queue")
 }
 
-func (stk *queue) peek() (interface{}, error) {
+func (stk *Queue) Peek() (interface{}, error) {
 	if stk.first != nil {
 		return stk.first.Data, nil
 	}
 	return 0, errors.New("Empty queue")
 }
 
-func (stk *queue) isEmpty() bool {
+func (stk *Queue) IsEmpty() bool {
 	return stk.first == nil
 }
 
