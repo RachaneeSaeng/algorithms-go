@@ -11,7 +11,7 @@ type queue struct {
 	last  *lnklist.Node
 }
 
-func (stk *queue) add(n int) {
+func (stk *queue) add(n interface{}) {
 	newNode := lnklist.New(n, nil)
 	if stk.last != nil {
 		stk.last.Next = newNode
@@ -22,7 +22,7 @@ func (stk *queue) add(n int) {
 	}
 }
 
-func (stk *queue) remove() (int, error) {
+func (stk *queue) remove() (interface{}, error) {
 	if stk.first != nil {
 		data := stk.first.Data
 		stk.first = stk.first.Next
@@ -31,7 +31,7 @@ func (stk *queue) remove() (int, error) {
 	return 0, errors.New("Empty queue")
 }
 
-func (stk *queue) peek() (int, error) {
+func (stk *queue) peek() (interface{}, error) {
 	if stk.first != nil {
 		return stk.first.Data, nil
 	}

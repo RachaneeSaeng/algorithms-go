@@ -10,12 +10,12 @@ type Stack struct {
 	top *lnklist.Node
 }
 
-func (stk *Stack) Push(n int) {
+func (stk *Stack) Push(n interface{}) {
 	newNode := lnklist.New(n, stk.top)
 	stk.top = newNode
 }
 
-func (stk *Stack) Pop() (int, error) {
+func (stk *Stack) Pop() (interface{}, error) {
 	if stk.top != nil {
 		data := stk.top.Data
 		stk.top = stk.top.Next
@@ -24,7 +24,7 @@ func (stk *Stack) Pop() (int, error) {
 	return 0, errors.New("Empty stack")
 }
 
-func (stk *Stack) Peek() (int, error) {
+func (stk *Stack) Peek() (interface{}, error) {
 	if stk.top != nil {
 		return stk.top.Data, nil
 	}
