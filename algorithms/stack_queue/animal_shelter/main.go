@@ -40,16 +40,15 @@ func (aq *animalQueue) enqueue(a interface{}) {
 		return
 	}
 }
-func (aq *animalQueue) dequeueAny() animal {
+func (aq *animalQueue) dequeueAny() interface{} {
 	if aq.dogs.Length() == 0 && aq.cats.Length() == 0 {
-		return animal{}
+		return nil
 	}
-
 	if aq.dogs.Length() == 0 {
-		return aq.dequeueCat().animal
+		return aq.dequeueCat()
 	}
 	if aq.cats.Length() == 0 {
-		return aq.dequeueDog().animal
+		return aq.dequeueDog()
 	}
 	iDog, _ := aq.dogs.Peek()
 	iCat, _ := aq.cats.Peek()
@@ -57,32 +56,32 @@ func (aq *animalQueue) dequeueAny() animal {
 	cat, _ := iCat.(cat)
 	if dog.order < cat.order {
 		aq.dogs.Remove()
-		return dog.animal
+		return dog
 	}
 	aq.cats.Remove()
-	return cat.animal
+	return cat
 }
 
-func (aq *animalQueue) dequeueDog() *dog {
+func (aq *animalQueue) dequeueDog() dog {
 	result, err := aq.dogs.Remove()
 	if err == nil {
 		dog, ok := result.(dog)
 		if ok {
-			return &dog
+			return dog
 		}
 	}
-	return nil
+	return dog{}
 }
 
-func (aq *animalQueue) dequeueCat() *cat {
+func (aq *animalQueue) dequeueCat() cat {
 	result, err := aq.cats.Remove()
 	if err == nil {
 		cat, ok := result.(cat)
 		if ok {
-			return &cat
+			return cat
 		}
 	}
-	return nil
+	return cat{}
 }
 
 func main() {
